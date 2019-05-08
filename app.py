@@ -7,6 +7,7 @@ def hello_world():
 
 @app.route('/register')
 def register(code):
+    print("--------code received--------")
     print(code)
 
 if __name__ == '__main__':
