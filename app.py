@@ -5,7 +5,7 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World!'
 
-@app.route('/<code>')
+@app.route('/<code>', methods=['GET'])
 def register(code):
     print("--------code received--------")
     print("CODE: "code)
