@@ -40,7 +40,7 @@ def register():
         app.logger.info("token: %s",subscriber["access_token"])
         app.logger.info("mobile number: %s",subscriber["subscriber_number"])
 
-        insert_subscriber_to_db(subscriber["access_token"], subscriber["subscriber_number"])
+        # insert_subscriber_to_db(subscriber["subscriber_number"], subscriber["access_token"])
 
         return 'Registered!'
     else:
@@ -52,11 +52,10 @@ def register():
 def insert_subscriber_to_db(address, access_token):
     conn = sqlite3.connect(sqlitedb)
     c = conn.cursor()
-
-    c.execute("""INSERT TO SUBSCRIBERS (address, access_token) VALUES (?, ?)""", address, access_token)
-
+    app.logger.info("inserting...address:%s and access_token: %s" % (address, access_token))
+    c.execute('INSERT INTO SUBSCRIBERS (address, access_token) VALUES (?, ?)', (address, access_token))
+    conn.commit()
     conn.close()
 
 if __name__ == '__main__':
     app.run(debug=True)
-    # print(os.getcwd())
