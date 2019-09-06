@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect
-from globelabs import Globe
+from util.globelabs3 import Globe
 import logging
 import json
 import sqlite3
